@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NameThatTone" />
+        <activity android:name=".NameThatToneSelectorScreen"></activity>
     </application>
 
 </manifest>
