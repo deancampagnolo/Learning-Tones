@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Learning Tones</string>
     <string name="WelcomeToLearningTones">Welcome to Learning Tones</string>
+    <string name="aNote">A</string>
+    <string name="asNote">A#/Bb</string>
+    <string name="bNote">B</string>
+    <string name="cNote">C</string>
+    <string name="csNote">C#/Db</string>
+    <string name="dNote">D</string>
+    <string name="dsNote">D#/Eb</string>
+    <string name="eNote">E</string>
+    <string name="fNote">F</string>
+    <string name="fsNote">F#/Gb</string>
+    <string name="gNote">G</string>
+    <string name="gsNote">G#/Ab</string>
+
+
+
 </resources>
