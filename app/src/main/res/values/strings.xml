@@ -13,7 +13,8 @@
     <string name="fsNote">F#/Gb</string>
     <string name="gNote">G</string>
     <string name="gsNote">G#/Ab</string>
-
+    <string name="SelectorScreenButtonSelectionInstructions">Select the Notes You Want to be Tested on</string>
+    <string name="nameThatToneTitle">Name That Tone</string>
 
 
 </resources>
