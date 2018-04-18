@@ -9,16 +9,23 @@
 
     <TextView
         android:id="@+id/SSRadioText"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:gravity="center"
         android:text="@string/SelectorScreenButtonSelectionInstructions"
+        android:textAlignment="center"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="24sp"
+        tools:layout_constraintBottom_creator="1"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
         tools:text="@string/SelectorScreenButtonSelectionInstructions"
-        tools:layout_editor_absoluteY="325dp"
-        tools:layout_editor_absoluteX="138dp" />
+        tools:layout_editor_absoluteX="139dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout" />
 
     <Button
 
@@ -28,8 +35,14 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/nextString"
-        tools:layout_editor_absoluteY="686dp"
-        tools:layout_editor_absoluteX="242dp" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="53dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -41,8 +54,18 @@
         android:layout_centerInParent="false"
         android:layout_gravity="center"
         android:columnCount="3"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="505dp">
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/NameThatToneNextButton"
+        android:layout_marginBottom="32dp"
+        android:id="@+id/gridLayout"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.5">
 
 
         <CheckBox
