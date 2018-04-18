@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import java.util.ArrayList;
 
 
 public class NameThatToneSelectorScreen extends AppCompatActivity {
@@ -18,8 +19,16 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
         Log.v(TAG, a);
     }
 
-    public CheckBox[] getNotes(){
-        return allTheNotes;
+    private ArrayList<CheckBox> getTrueNotes(){
+        ArrayList<CheckBox> trueNotes = new ArrayList<>();
+        for(int i = 0; i<allTheNotes.length; i++){
+            if(allTheNotes[i].isChecked()){
+                trueNotes.add(allTheNotes[i]);
+            }
+        }
+        return trueNotes;
+
+
     }
 
 
@@ -36,7 +45,6 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
         allTheNotes[9] = (CheckBox)findViewById(R.id.fsCheck);
         allTheNotes[10] = (CheckBox)findViewById(R.id.gCheck);
         allTheNotes[11] = (CheckBox)findViewById(R.id.gsCheck);
-
     }
 
     @Override
@@ -46,7 +54,9 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
 
         Log.v(TAG, "Weemp Womp");
 
-        initializeNotes();
+        //initializeNotes();
+
+        //p(""+allTheNotes[0].isChecked());
 
 
 
@@ -72,7 +82,9 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
     }
 
     public void onButtonClicked(View v){
-        startActivity(new Intent(this, NameThatTone.class));
+        Intent i = new Intent(this, NameThatTone.class);
+        i.putExtra("trueNotes", getTrueNotes());
+        allTheNotes[0].isChecked();
     }
 
 
