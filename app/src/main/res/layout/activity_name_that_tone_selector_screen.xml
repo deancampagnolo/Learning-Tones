@@ -69,7 +69,7 @@
 
 
         <CheckBox
-            android:id="@+id/aRadio"
+            android:id="@+id/aCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -78,7 +78,7 @@
             tools:text="@string/aNote" />
 
         <CheckBox
-            android:id="@+id/asRadio"
+            android:id="@+id/asCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -87,7 +87,7 @@
             tools:text="@string/asNote" />
 
         <CheckBox
-            android:id="@+id/bRadio"
+            android:id="@+id/bCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -96,7 +96,7 @@
             tools:text="@string/bNote" />
 
         <CheckBox
-            android:id="@+id/cRadio"
+            android:id="@+id/cCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
@@ -107,7 +107,7 @@
             tools:text="@string/cNote" />
 
         <CheckBox
-            android:id="@+id/csRadio"
+            android:id="@+id/csCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -116,7 +116,7 @@
             tools:text="@string/csNote" />
 
         <CheckBox
-            android:id="@+id/dRadio"
+            android:id="@+id/dCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -125,7 +125,7 @@
             tools:text="@string/dNote" />
 
         <CheckBox
-            android:id="@+id/dsRadio"
+            android:id="@+id/dsCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
@@ -136,7 +136,7 @@
             tools:text="@string/dsNote" />
 
         <CheckBox
-            android:id="@+id/eRadio"
+            android:id="@+id/eCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -145,7 +145,7 @@
             tools:text="@string/eNote" />
 
         <CheckBox
-            android:id="@+id/fRadio"
+            android:id="@+id/fCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -154,7 +154,7 @@
             tools:text="@string/fNote" />
 
         <CheckBox
-            android:id="@+id/fsRadio"
+            android:id="@+id/fsCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
@@ -165,7 +165,7 @@
             tools:text="@string/fsNote" />
 
         <CheckBox
-            android:id="@+id/gRadio"
+            android:id="@+id/gCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -174,7 +174,7 @@
             tools:text="@string/gNote" />
 
         <CheckBox
-            android:id="@+id/gsRadio"
+            android:id="@+id/gsCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
