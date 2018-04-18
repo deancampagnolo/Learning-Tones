@@ -42,7 +42,8 @@
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="53dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.5"
+        android:onClick="onButtonClicked"/>
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -75,7 +76,8 @@
             android:layout_marginLeft="10dp"
             android:text="@string/aNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/aNote" />
+            tools:text="@string/aNote"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:id="@+id/asCheck"
@@ -84,7 +86,8 @@
             android:layout_marginLeft="10dp"
             android:text="@string/asNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/asNote" />
+            tools:text="@string/asNote"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:id="@+id/bCheck"

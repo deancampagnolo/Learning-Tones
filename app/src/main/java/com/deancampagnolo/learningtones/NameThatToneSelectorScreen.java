@@ -1,5 +1,6 @@
 package com.deancampagnolo.learningtones;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,8 +10,34 @@ import android.widget.CheckBox;
 
 public class NameThatToneSelectorScreen extends AppCompatActivity {
 
-    private CheckBox a, as, b, c, cs, d, ds, e, f, fs, g, gs;// declared for every checkbox/note
-    String TAG = "Dean";
+
+    private CheckBox[] allTheNotes;
+    String TAG = "dean";
+
+    private void p(String a){
+        Log.v(TAG, a);
+    }
+
+    public CheckBox[] getNotes(){
+        return allTheNotes;
+    }
+
+
+    public void initializeNotes(){
+        allTheNotes[0] = (CheckBox)findViewById(R.id.aCheck);
+        allTheNotes[1] = (CheckBox)findViewById(R.id.asCheck);
+        allTheNotes[2] = (CheckBox)findViewById(R.id.bCheck);
+        allTheNotes[3] = (CheckBox)findViewById(R.id.cCheck);
+        allTheNotes[4] = (CheckBox)findViewById(R.id.csCheck);
+        allTheNotes[5] = (CheckBox)findViewById(R.id.dCheck);
+        allTheNotes[6] = (CheckBox)findViewById(R.id.dsCheck);
+        allTheNotes[7] = (CheckBox)findViewById(R.id.eCheck);
+        allTheNotes[8] = (CheckBox)findViewById(R.id.fCheck);
+        allTheNotes[9] = (CheckBox)findViewById(R.id.fsCheck);
+        allTheNotes[10] = (CheckBox)findViewById(R.id.gCheck);
+        allTheNotes[11] = (CheckBox)findViewById(R.id.gsCheck);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +46,9 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
 
         Log.v(TAG, "Weemp Womp");
 
+        initializeNotes();
 
-        a = (CheckBox)findViewById(R.id.aCheck);
-        as = (CheckBox)findViewById(R.id.asCheck);
-        b = (CheckBox)findViewById(R.id.bCheck);
-        c = (CheckBox)findViewById(R.id.cCheck);
-        cs = (CheckBox)findViewById(R.id.csCheck);
-        d = (CheckBox)findViewById(R.id.dCheck);
-        ds = (CheckBox)findViewById(R.id.dsCheck);
-        e = (CheckBox)findViewById(R.id.eCheck);
-        f = (CheckBox)findViewById(R.id.fCheck);
-        g = (CheckBox)findViewById(R.id.gCheck);
-        gs = (CheckBox)findViewById(R.id.gsCheck);
+
 
     }
 
@@ -38,8 +56,23 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
         boolean checked = ((CheckBox)v).isChecked();
         switch(v.getId()){
             case R.id.aCheck:
-                Log.v(TAG, "asdljldsakfjlsdkfjlsdkj");
+                if(checked) {
+                    p("a");
+                } else {
+                    p("na");
+                }
+                break;
+            case R.id.asCheck:
+                if(checked){
+                    p("as");
+                } else{
+                    p("nas");
+                }
         }
+    }
+
+    public void onButtonClicked(View v){
+        startActivity(new Intent(this, NameThatTone.class));
     }
 
 
