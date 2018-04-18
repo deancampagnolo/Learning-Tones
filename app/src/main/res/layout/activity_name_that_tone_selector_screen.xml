@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,29 +9,43 @@
 
     <TextView
         android:id="@+id/SSRadioText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:gravity="center"
         android:text="@string/SelectorScreenButtonSelectionInstructions"
         android:textColor="@android:color/holo_orange_light"
-        android:textSize="18sp"
-        android:layout_marginTop="300dp"
-        tools:text="@string/SelectorScreenButtonSelectionInstructions" />
+        android:textSize="24sp"
+        tools:text="@string/SelectorScreenButtonSelectionInstructions"
+        tools:layout_editor_absoluteY="325dp"
+        tools:layout_editor_absoluteX="138dp" />
+
+    <Button
+
+        android:id="@+id/NameThatToneNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/nextString"
+        tools:layout_editor_absoluteY="686dp"
+        tools:layout_editor_absoluteX="242dp" />
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
-        android:columnCount="3">
+        android:layout_below="@+id/SSRadioText"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_gravity="center"
+        android:columnCount="3"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="505dp">
 
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/aRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +54,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/aNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/asRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +63,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/asNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/bRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +72,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/bNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/cRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,7 +83,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/cNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/csRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +92,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/csNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/dRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +101,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/dNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/dsRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +112,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/dsNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/eRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,7 +121,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/eNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/fRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +130,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/fNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/fsRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +141,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/fsNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/gRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,7 +150,7 @@
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/gNote" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/gsRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -146,4 +160,4 @@
             tools:text="@string/gsNote" />
 
     </GridLayout>
-</android.widget.RelativeLayout>
+</android.support.constraint.ConstraintLayout>
