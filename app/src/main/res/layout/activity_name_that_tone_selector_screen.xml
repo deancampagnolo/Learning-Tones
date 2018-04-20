@@ -77,7 +77,7 @@
             android:text="@string/aNote"
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/aNote"
-            android:onClick="onCheckboxClicked"/>
+            />
 
         <CheckBox
             android:id="@+id/asCheck"
@@ -87,7 +87,7 @@
             android:text="@string/asNote"
             android:textColor="@android:color/holo_green_light"
             tools:text="@string/asNote"
-            android:onClick="onCheckboxClicked"/>
+            />
 
         <CheckBox
             android:id="@+id/bCheck"

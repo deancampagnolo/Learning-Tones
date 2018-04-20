@@ -1,18 +1,12 @@
 package com.deancampagnolo.learningtones;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
-import android.widget.LinearLayout;
 
-import java.util.ArrayList;
 
 public class NameThatTone extends AppCompatActivity {
     private final int NUMBEROFNOTES = 12;
@@ -20,19 +14,32 @@ public class NameThatTone extends AppCompatActivity {
     private boolean[] notesBoolean;
     private CheckBox[] allTheNotes;
     private GridLayout gridLayout;
+
+    //This function helps with debugging by logging values
     private void p(String a){
         Log.v(TAG, a);
     }
-    //ArrayList<CheckBox> theNotes;
 
 
-    private void unnecessaryNotesDisappear(){
-        for(int i = 0; i<NUMBEROFNOTES; i++){
-            if(!notesBoolean[i] ){//if false
-                gridLayout.removeView(allTheNotes[i]);
-            }
-        }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_name_that_tone);
+
+        //this block is to retrieve the booleanArray from the last intent
+        Intent lastIntent = getIntent();
+        notesBoolean = lastIntent.getBooleanArrayExtra("notesBoolean");
+
+        gridLayout = (GridLayout) findViewById(R.id.NTTGridLayout);
+        allTheNotes = new CheckBox[NUMBEROFNOTES];
+
+        initializeNotes();
+
+        unnecessaryNotesDisappear();
     }
+
+    //This function initializes the CheckBoxes in nameThatTone into the allTheNotes CheckBox array
     public void initializeNotes(){
         allTheNotes[0] = (CheckBox)findViewById(R.id.aAnswer);
         allTheNotes[1] = (CheckBox)findViewById(R.id.asAnswer);
@@ -47,36 +54,17 @@ public class NameThatTone extends AppCompatActivity {
         allTheNotes[10] = (CheckBox)findViewById(R.id.gAnswer);
         allTheNotes[11] = (CheckBox)findViewById(R.id.gsAnswer);
     }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Intent lastIntent = getIntent();
-        //String yes = lastIntent.getStringExtra("yes");
-        //p(yes);
-        notesBoolean = lastIntent.getBooleanArrayExtra("notesBoolean");
-        for(int i = 0; i<notesBoolean.length; i++){
-            p(""+notesBoolean[i]);
+
+    //removes CheckBoxes from view if they have the value false
+    private void unnecessaryNotesDisappear(){
+        for(int i = 0; i<NUMBEROFNOTES; i++){
+            if(!notesBoolean[i] ){//if false
+                gridLayout.removeView(allTheNotes[i]);
+            }
         }
-
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_name_that_tone);
-        gridLayout = (GridLayout) findViewById(R.id.NTTGridLayout);
-        allTheNotes = new CheckBox[NUMBEROFNOTES];
-
-        initializeNotes();
-
-        unnecessaryNotesDisappear();
-        /*CheckBox checkA = (CheckBox) findViewById(R.id.aAnswer);
-        gridLayout.removeView(checkA);
-        */
-
-
-        /*
-        GridLayout gridLayout = new GridLayout(this);
-        CheckBox checkBox = new CheckBox(this);
-        checkBox.setGravity(Gravity.CENTER);
-
-        gridLayout.addView(checkBox);*/
-
     }
+
+
+
+
 }

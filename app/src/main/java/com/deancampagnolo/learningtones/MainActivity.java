@@ -12,9 +12,13 @@ public class MainActivity extends AppCompatActivity {
     Button nameThatToneButton;
     String TAG = "dean";
 
+    //This function helps with debugging by logging values
+    private void p(String a){
+        Log.v(TAG, a);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.v(TAG, "Weemp Wompz");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         nameThatToneButton = (Button)findViewById(R.id.nameThatToneButton);
@@ -24,11 +28,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, NameThatToneSelectorScreen.class));
             }
         });
-
     }
-
-
-    /*public void onClick(View v){
-
-    }*/
 }
