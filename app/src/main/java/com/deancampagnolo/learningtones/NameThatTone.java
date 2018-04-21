@@ -1,11 +1,16 @@
 package com.deancampagnolo.learningtones;
 
+
 import android.content.Intent;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
+
+
 
 
 public class NameThatTone extends AppCompatActivity {
@@ -31,12 +36,13 @@ public class NameThatTone extends AppCompatActivity {
         Intent lastIntent = getIntent();
         notesBoolean = lastIntent.getBooleanArrayExtra("notesBoolean");
 
+
         gridLayout = (GridLayout) findViewById(R.id.NTTGridLayout);
         allTheNotes = new CheckBox[NUMBEROFNOTES];
 
         initializeNotes();
-
         unnecessaryNotesDisappear();
+        SoundPool a;//https://stackoverflow.com/questions/13883883/playing-short-wav-files-android
     }
 
     //This function initializes the CheckBoxes in nameThatTone into the allTheNotes CheckBox array
@@ -62,6 +68,20 @@ public class NameThatTone extends AppCompatActivity {
                 gridLayout.removeView(allTheNotes[i]);
             }
         }
+    }
+
+    public void onButtonClicked(View v){
+        switch(v.getId()){
+            case R.id.hearAgainButton:
+                p("hearAgainButton pressed");
+                break;
+
+            case R.id.submitButton:
+                p("submitButton pressed");
+                break;
+
+        }
+
     }
 
 
