@@ -2,6 +2,7 @@ package com.deancampagnolo.learningtones;
 
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,7 +43,9 @@ public class NameThatTone extends AppCompatActivity {
 
         initializeNotes();
         unnecessaryNotesDisappear();
-        SoundPool a;//https://stackoverflow.com/questions/13883883/playing-short-wav-files-android
+        SoundPool sp = new SoundPool.Builder().build();//samples default to 1 which I want.
+        int k = sp.load(this,R.raw.piano51,1);
+        sp.play(k,1,1,1,1,.5f);
     }
 
     //This function initializes the CheckBoxes in nameThatTone into the allTheNotes CheckBox array
