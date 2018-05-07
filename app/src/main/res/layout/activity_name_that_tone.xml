@@ -143,5 +143,5 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:onClick="onButtonClicked "/>
+        android:onClick="onButtonClicked"/>
 </android.support.constraint.ConstraintLayout>
