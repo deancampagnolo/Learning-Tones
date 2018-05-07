@@ -115,12 +115,13 @@ public class NameThatTone extends AppCompatActivity {
         //p("FIRST"+id);
         //p("SECOND"+R.raw.a0);
         createUsableNotes();
-        sp = new SoundPool.Builder().setMaxStreams(20).build();//samples default to 1 which I want.
+        sp = new SoundPool.Builder().setMaxStreams(1).build();//samples default to 1 which I want.
         loadRealNotes(sp);
 
 
-
-        int firstNote = (int)(Math.random()*1);
+        numberOfNotesBeingUsed = soundPoolUsableNotes.size();
+        getRandomNote();
+        currentNote = getRandomNote();
 
 
 
@@ -128,6 +129,10 @@ public class NameThatTone extends AppCompatActivity {
         //traverse(R.raw);
         //sp.play(k,1,1,1,1,.5f);
         p("after play");
+    }
+
+    public int getRandomNote(){
+        return (int)(Math.random()*numberOfNotesBeingUsed);
     }
 
 
@@ -174,11 +179,13 @@ public class NameThatTone extends AppCompatActivity {
         switch(v.getId()){
             case R.id.hearAgainButton:
                 p("hearAgainButton pressed");
-                sp.play(soundPoolUsableNotes.get(5),1,1,1,1,.5f);
+                sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,.5f);
                 break;
 
             case R.id.submitButton:
                 p("submitButton pressed");
+                currentNote = getRandomNote();
+                sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,.5f);
                 break;
 
         }
