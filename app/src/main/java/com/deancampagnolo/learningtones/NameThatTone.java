@@ -1,6 +1,5 @@
 package com.deancampagnolo.learningtones;
 
-
 import android.content.Intent;
 import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
@@ -9,16 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 
-
 public class NameThatTone extends AppCompatActivity {
-    private int usableNotesStart = 1;
-    private int usableNotesFinish = 7;
+    private int usableNotesStart = 2;
+    private int usableNotesFinish = 6;
     private final int NUMBEROFNOTES = 12;
     private String TAG = "dean";
     private boolean[] notesBoolean;
@@ -26,6 +20,7 @@ public class NameThatTone extends AppCompatActivity {
     private GridLayout gridLayout;
     private ArrayList<Integer> usableNotes;
     private ArrayList<Integer> soundPoolUsableNotes;
+    private ArrayList<Integer> soundPoolExtras;
     private int currentNote;
     private int numberOfNotesBeingUsed;
     private SoundPool sp;
@@ -91,8 +86,16 @@ public class NameThatTone extends AppCompatActivity {
     private void loadRealNotes(SoundPool sp){
         soundPoolUsableNotes = new ArrayList<>();
         for(int i = 0;i<usableNotes.size();i++){
-            soundPoolUsableNotes.add(sp.load(this,usableNotes.get(i),1));
+            soundPoolUsableNotes.add(sp.load(this,usableNotes.get(i),0));
         }
+    }
+
+    private void loadExtras(SoundPool sp){
+        //first index is always success
+        //second index is always wrong
+        soundPoolExtras = new ArrayList<>();
+        soundPoolExtras.add(sp.load(this,R.raw.success,0));
+        soundPoolExtras.add(sp.load(this,R.raw.wrong,0));
     }
 
     @Override
@@ -115,16 +118,13 @@ public class NameThatTone extends AppCompatActivity {
         //p("FIRST"+id);
         //p("SECOND"+R.raw.a0);
         createUsableNotes();
-        sp = new SoundPool.Builder().setMaxStreams(1).build();//samples default to 1 which I want.
+        sp = new SoundPool.Builder().setMaxStreams(2).build();//samples default to 1 which I want.
         loadRealNotes(sp);
-
+        loadExtras(sp);
 
         numberOfNotesBeingUsed = soundPoolUsableNotes.size();
         getRandomNote();
         currentNote = getRandomNote();
-
-
-
 
         //traverse(R.raw);
         //sp.play(k,1,1,1,1,.5f);
@@ -179,20 +179,66 @@ public class NameThatTone extends AppCompatActivity {
         switch(v.getId()){
             case R.id.hearAgainButton:
                 p("hearAgainButton pressed");
-                sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,.5f);
+                sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
                 break;
 
             case R.id.submitButton:
                 p("submitButton pressed");
                 currentNote = getRandomNote();
-                sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,.5f);
+                sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
+                if(isSubmissionCorrect()){
+                    answerTrue();
+                } else {
+                    answerFalse();
+                }
                 break;
 
         }
-
     }
 
+    public int currentNoteIs(){//returns the note in regards to allTheNotes
+        int amountPerNote = (usableNotesFinish-usableNotesStart)+1;//for the total amount of notes
+        int beginningSearch = 0;
 
 
+        for(int i = 0; i<notesBoolean.length; i++){
+            if(notesBoolean[i]){
+                if(currentNote>=beginningSearch && currentNote<beginningSearch+amountPerNote){
+                    return i;
+                }
+                beginningSearch += amountPerNote;
+                //if(allTheNotes[i].isChecked() && !(currentNote>=beginningSearch && currentNote<beginningSearch+amountPerNote)){
+                  //  return false;
+                //}
+                //allTheNotes[i].isChecked();
+            }
+        }
+        return -1;
+    }
+
+    public boolean isSubmissionCorrect(){
+        for(int i = 0; i<notesBoolean.length; i++) {
+            if (notesBoolean[i]) {
+                //p(""+allTheNotes[i].isChecked());
+                //p(""+currentNoteIs());
+                //p(""+currentNote);
+                if (allTheNotes[i].isChecked() && i != currentNoteIs()) {
+                    return false;
+                }
+            }
+        }
+        if(allTheNotes[currentNoteIs()].isChecked()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public void answerFalse(){
+        sp.play(soundPoolExtras.get(1),1,1,0,0,1f);
+    }
+    public void answerTrue(){
+        sp.play(soundPoolExtras.get(0),1,1,0,0,.8f);
+
+    }
 
 }
