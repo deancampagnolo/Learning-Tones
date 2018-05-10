@@ -47,73 +47,85 @@
             android:id="@+id/aAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/aNote" />
+            android:text="@string/aNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/asAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/asNote" />
+            android:text="@string/asNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/bAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bNote" />
+            android:text="@string/bNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/cAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cNote" />
+            android:text="@string/cNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/csAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/csNote" />
+            android:text="@string/csNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/dAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dNote" />
+            android:text="@string/dNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/dsAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dsNote" />
+            android:text="@string/dsNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/eAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/eNote" />
+            android:text="@string/eNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/fAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fNote" />
+            android:text="@string/fNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/fsAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fsNote" />
+            android:text="@string/fsNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/gAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/gNote" />
+            android:text="@string/gNote"
+            android:onClick="onCheckBoxClicked"/>
 
         <CheckBox
             android:id="@+id/gsAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/gsNote" />
+            android:text="@string/gsNote"
+            android:onClick="onCheckBoxClicked"/>
     </GridLayout>
 
     <Button

@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 
 public class NameThatToneSelectorScreen extends AppCompatActivity {
 
+    boolean atLeastOneIsChecked;
     private CheckBox[] allTheNotes;
     String TAG = "dean";
 
@@ -51,15 +52,19 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
     public void onButtonClicked(View v){
         Intent i = new Intent(this, NameThatTone.class);
         i.putExtra("notesBoolean", getNotesBoolean());
-        startActivity(i);
+        if(atLeastOneIsChecked) {
+            startActivity(i);
+        }
     }
 
     //This function puts all of the checked values of allTheNotes into a boolean array and returns it.
     private boolean[] getNotesBoolean(){
+        atLeastOneIsChecked = false;
         boolean[] notesBoolean = new boolean[allTheNotes.length];
         for(int i = 0; i<allTheNotes.length; i++){
             if(allTheNotes[i].isChecked()){
                 notesBoolean[i] = true;
+                atLeastOneIsChecked = true;
             } else{
                 notesBoolean[i] = false;
             }

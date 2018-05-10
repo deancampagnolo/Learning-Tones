@@ -1,11 +1,13 @@
 package com.deancampagnolo.learningtones;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
 import java.util.ArrayList;
@@ -126,6 +128,12 @@ public class NameThatTone extends AppCompatActivity {
         getRandomNote();
         currentNote = getRandomNote();
 
+        //initializing the button to next note in the beginning
+        Button a = (Button)findViewById(R.id.submitButton);
+        a.setText(R.string.start);
+
+
+
         //traverse(R.raw);
         //sp.play(k,1,1,1,1,.5f);
         p("after play");
@@ -179,13 +187,23 @@ public class NameThatTone extends AppCompatActivity {
         switch(v.getId()){
             case R.id.hearAgainButton:
                 p("hearAgainButton pressed");
-                sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
+                sp.play(soundPoolUsableNotes.get(currentNote),1f,1f,0,0,1f);
                 break;
 
             case R.id.submitButton:
-                p("submitButton pressed");
-                currentNote = getRandomNote();
-                sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
+                //p("submitButton pressed");
+
+                if(((Button) v).getText().toString() == getString(R.string.nextNote) ||
+                        ((Button) v).getText().toString() == getString(R.string.start)){
+                    clearEverything();
+                    ((Button) v).setText(R.string.submit);
+                    currentNote = getRandomNote();
+                    sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
+                    break;
+                }
+
+
+
                 if(isSubmissionCorrect()){
                     answerTrue();
                 } else {
@@ -193,6 +211,14 @@ public class NameThatTone extends AppCompatActivity {
                 }
                 break;
 
+        }
+    }
+
+    public void onCheckBoxClicked(View v){//TODO this functions speed can be massively improved
+        for(int i = 0; i<NUMBEROFNOTES; i++){
+            if(v.getId() != allTheNotes[i].getId()){
+                allTheNotes[i].setChecked(false);
+            }
         }
     }
 
@@ -233,12 +259,27 @@ public class NameThatTone extends AppCompatActivity {
             return false;
         }
     }
-    public void answerFalse(){
-        sp.play(soundPoolExtras.get(1),1,1,0,0,1f);
-    }
     public void answerTrue(){
-        sp.play(soundPoolExtras.get(0),1,1,0,0,.8f);
+        sp.play(soundPoolExtras.get(0),1f,1f,0,0,1f);
+        allTheNotes[currentNoteIs()].setTextColor(Color.GREEN);
+        Button a = (Button)findViewById(R.id.submitButton);
+        a.setText(R.string.nextNote);
 
+    }
+
+    public void answerFalse(){
+        sp.play(soundPoolExtras.get(1),.3f,.3f,0,0,1f);
+        allTheNotes[currentNoteIs()].setTextColor(Color.GREEN);
+        Button k = (Button)findViewById(R.id.submitButton);
+        k.setText(R.string.nextNote);
+
+    }
+
+    public void clearEverything(){
+        for(int i  = 0; i<NUMBEROFNOTES; i++){
+            allTheNotes[i].setChecked(false);
+            allTheNotes[i].setTextColor(Color.BLACK);
+        }
     }
 
 }

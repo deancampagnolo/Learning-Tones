@@ -24,9 +24,8 @@
         android:id="@+id/helpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/gridLayout2"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
         android:text="Help?"
         android:textColor="@android:color/holo_blue_dark" />
 
@@ -55,18 +54,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Name That Tone!" />
+            android:text="Name That Tone!"
+            android:layout_row="0"
+            android:layout_column="0" />
     </GridLayout>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView2"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="178dp"
         android:text="Games"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="20dp" />
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        ads:adSize = "SMART_BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        />
 
 </android.widget.RelativeLayout>
