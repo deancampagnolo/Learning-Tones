@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         nameThatToneButton = (Button)findViewById(R.id.nameThatToneButton);
 
         //for ads
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");//FIXME CHANGE THIS LATER TO MY ADMOB APP ID
+        MobileAds.initialize(this, "ca-app-pub-8739894858175787~8702293436");
         myAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         myAdView.loadAd(adRequest);
