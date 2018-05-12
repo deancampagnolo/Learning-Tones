@@ -3,12 +3,12 @@
     package="com.deancampagnolo.learningtones">
 
     <application
-        android:versionCode = "3"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+        android:versionCode="3">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NameThatTone" />
-        <activity android:name=".NameThatToneSelectorScreen"></activity>
+        <activity android:name=".NameThatToneSelectorScreen" />
+        <activity android:name=".StatisticsPage"></activity>
     </application>
 
 </manifest>

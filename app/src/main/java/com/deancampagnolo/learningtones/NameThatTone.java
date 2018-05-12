@@ -23,6 +23,7 @@ public class NameThatTone extends AppCompatActivity {
     private ArrayList<Integer> usableNotes;
     private ArrayList<Integer> soundPoolUsableNotes;
     private ArrayList<Integer> soundPoolExtras;
+    private int[][] scores;
     private int currentNote;
     private int numberOfNotesBeingUsed;
     private SoundPool sp;
@@ -30,6 +31,71 @@ public class NameThatTone extends AppCompatActivity {
     //This function helps with debugging by logging values
     private void p(String a){
         Log.v(TAG, a);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        //setting the xml file
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_name_that_tone);
+
+        //this block is to retrieve the booleanArray from the last intent
+        Intent lastIntent = getIntent();
+        notesBoolean = lastIntent.getBooleanArrayExtra("notesBoolean");
+
+        //gets the grid layout
+        gridLayout = (GridLayout) findViewById(R.id.NTTGridLayout);
+        allTheNotes = new CheckBox[NUMBEROFNOTES];
+
+        initializeNotes();
+        initializeScores();
+        unnecessaryNotesDisappear();
+
+        createUsableNotes();
+        sp = new SoundPool.Builder().setMaxStreams(2).build();//samples default to 1 which I want.
+        loadRealNotes(sp);
+        loadExtras(sp);
+
+        numberOfNotesBeingUsed = soundPoolUsableNotes.size();
+        getRandomNote();
+        currentNote = getRandomNote();
+
+        //initializing the button to next note in the beginning
+        Button a = (Button)findViewById(R.id.submitButton);
+        a.setText(R.string.start);
+
+        p("after play");
+    }
+
+    //This function initializes the CheckBoxes in nameThatTone into the allTheNotes CheckBox array
+    public void initializeNotes(){
+        allTheNotes[0] = (CheckBox)findViewById(R.id.aAnswer);
+        allTheNotes[1] = (CheckBox)findViewById(R.id.asAnswer);
+        allTheNotes[2] = (CheckBox)findViewById(R.id.bAnswer);
+        allTheNotes[3] = (CheckBox)findViewById(R.id.cAnswer);
+        allTheNotes[4] = (CheckBox)findViewById(R.id.csAnswer);
+        allTheNotes[5] = (CheckBox)findViewById(R.id.dAnswer);
+        allTheNotes[6] = (CheckBox)findViewById(R.id.dsAnswer);
+        allTheNotes[7] = (CheckBox)findViewById(R.id.eAnswer);
+        allTheNotes[8] = (CheckBox)findViewById(R.id.fAnswer);
+        allTheNotes[9] = (CheckBox)findViewById(R.id.fsAnswer);
+        allTheNotes[10] = (CheckBox)findViewById(R.id.gAnswer);
+        allTheNotes[11] = (CheckBox)findViewById(R.id.gsAnswer);
+    }
+
+    public void initializeScores(){
+        //first is number of notes, second is right and wrong
+        scores = new int[12][2];//in java all values are initialized to 0
+    }
+
+    //removes CheckBoxes from view if they have the value false
+    private void unnecessaryNotesDisappear(){
+        for(int i = 0; i<NUMBEROFNOTES; i++){
+            if(!notesBoolean[i] ){//if false
+                gridLayout.removeView(allTheNotes[i]);
+            }
+        }
     }
 
     private void createUsableNotes(){
@@ -100,87 +166,8 @@ public class NameThatTone extends AppCompatActivity {
         soundPoolExtras.add(sp.load(this,R.raw.wrong,0));
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_name_that_tone);
-
-        //this block is to retrieve the booleanArray from the last intent
-        Intent lastIntent = getIntent();
-        notesBoolean = lastIntent.getBooleanArrayExtra("notesBoolean");
-
-
-        gridLayout = (GridLayout) findViewById(R.id.NTTGridLayout);
-        allTheNotes = new CheckBox[NUMBEROFNOTES];
-        //R.id.
-        initializeNotes();
-        unnecessaryNotesDisappear();
-        //int id = getApplicationContext().getResources().getIdentifier("a0","raw",getPackageName());
-        //p("FIRST"+id);
-        //p("SECOND"+R.raw.a0);
-        createUsableNotes();
-        sp = new SoundPool.Builder().setMaxStreams(2).build();//samples default to 1 which I want.
-        loadRealNotes(sp);
-        loadExtras(sp);
-
-        numberOfNotesBeingUsed = soundPoolUsableNotes.size();
-        getRandomNote();
-        currentNote = getRandomNote();
-
-        //initializing the button to next note in the beginning
-        Button a = (Button)findViewById(R.id.submitButton);
-        a.setText(R.string.start);
-
-
-
-        //traverse(R.raw);
-        //sp.play(k,1,1,1,1,.5f);
-        p("after play");
-    }
-
     public int getRandomNote(){
         return (int)(Math.random()*numberOfNotesBeingUsed);
-    }
-
-
-    /*public void traverse (File dir) {
-        if (dir.exists()) {
-            File[] files = dir.listFiles();
-            for (int i = 0; i < files.length; ++i) {
-                File file = files[i];
-                if (file.isDirectory()) {
-                    traverse(file);
-                } else {
-                    // do something here with the file
-                }
-            }
-        }
-    }*/
-
-    //This function initializes the CheckBoxes in nameThatTone into the allTheNotes CheckBox array
-    public void initializeNotes(){
-        allTheNotes[0] = (CheckBox)findViewById(R.id.aAnswer);
-        allTheNotes[1] = (CheckBox)findViewById(R.id.asAnswer);
-        allTheNotes[2] = (CheckBox)findViewById(R.id.bAnswer);
-        allTheNotes[3] = (CheckBox)findViewById(R.id.cAnswer);
-        allTheNotes[4] = (CheckBox)findViewById(R.id.csAnswer);
-        allTheNotes[5] = (CheckBox)findViewById(R.id.dAnswer);
-        allTheNotes[6] = (CheckBox)findViewById(R.id.dsAnswer);
-        allTheNotes[7] = (CheckBox)findViewById(R.id.eAnswer);
-        allTheNotes[8] = (CheckBox)findViewById(R.id.fAnswer);
-        allTheNotes[9] = (CheckBox)findViewById(R.id.fsAnswer);
-        allTheNotes[10] = (CheckBox)findViewById(R.id.gAnswer);
-        allTheNotes[11] = (CheckBox)findViewById(R.id.gsAnswer);
-    }
-
-    //removes CheckBoxes from view if they have the value false
-    private void unnecessaryNotesDisappear(){
-        for(int i = 0; i<NUMBEROFNOTES; i++){
-            if(!notesBoolean[i] ){//if false
-                gridLayout.removeView(allTheNotes[i]);
-            }
-        }
     }
 
     public void onButtonClicked(View v){
@@ -202,15 +189,12 @@ public class NameThatTone extends AppCompatActivity {
                     break;
                 }
 
-
-
                 if(isSubmissionCorrect()){
                     answerTrue();
                 } else {
                     answerFalse();
                 }
                 break;
-
         }
     }
 
@@ -222,32 +206,17 @@ public class NameThatTone extends AppCompatActivity {
         }
     }
 
-    public int currentNoteIs(){//returns the note in regards to allTheNotes
-        int amountPerNote = (usableNotesFinish-usableNotesStart)+1;//for the total amount of notes
-        int beginningSearch = 0;
-
-
-        for(int i = 0; i<notesBoolean.length; i++){
-            if(notesBoolean[i]){
-                if(currentNote>=beginningSearch && currentNote<beginningSearch+amountPerNote){
-                    return i;
-                }
-                beginningSearch += amountPerNote;
-                //if(allTheNotes[i].isChecked() && !(currentNote>=beginningSearch && currentNote<beginningSearch+amountPerNote)){
-                  //  return false;
-                //}
-                //allTheNotes[i].isChecked();
-            }
+    public void clearEverything(){
+        for(int i  = 0; i<NUMBEROFNOTES; i++){
+            allTheNotes[i].setChecked(false);
+            allTheNotes[i].setTextColor(Color.BLACK);
         }
-        return -1;
     }
 
     public boolean isSubmissionCorrect(){
         for(int i = 0; i<notesBoolean.length; i++) {
             if (notesBoolean[i]) {
-                //p(""+allTheNotes[i].isChecked());
-                //p(""+currentNoteIs());
-                //p(""+currentNote);
+
                 if (allTheNotes[i].isChecked() && i != currentNoteIs()) {
                     return false;
                 }
@@ -259,11 +228,13 @@ public class NameThatTone extends AppCompatActivity {
             return false;
         }
     }
+
     public void answerTrue(){
         sp.play(soundPoolExtras.get(0),1f,1f,0,0,1f);
         allTheNotes[currentNoteIs()].setTextColor(Color.GREEN);
         Button a = (Button)findViewById(R.id.submitButton);
         a.setText(R.string.nextNote);
+        scores[currentNoteIs()][0] ++;
 
     }
 
@@ -272,14 +243,22 @@ public class NameThatTone extends AppCompatActivity {
         allTheNotes[currentNoteIs()].setTextColor(Color.GREEN);
         Button k = (Button)findViewById(R.id.submitButton);
         k.setText(R.string.nextNote);
+        scores[currentNoteIs()][1] ++;
 
     }
 
-    public void clearEverything(){
-        for(int i  = 0; i<NUMBEROFNOTES; i++){
-            allTheNotes[i].setChecked(false);
-            allTheNotes[i].setTextColor(Color.BLACK);
+    public int currentNoteIs(){//returns the note in regards to allTheNotes
+        int amountPerNote = (usableNotesFinish-usableNotesStart)+1;//for the total amount of notes
+        int beginningSearch = 0;
+
+        for(int i = 0; i<notesBoolean.length; i++){
+            if(notesBoolean[i]){
+                if(currentNote>=beginningSearch && currentNote<beginningSearch+amountPerNote){
+                    return i;
+                }
+                beginningSearch += amountPerNote;
+            }
         }
+        return -1;
     }
-
 }
