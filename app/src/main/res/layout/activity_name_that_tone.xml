@@ -174,5 +174,6 @@
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/adView2"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="@string/FinishString" />
+        tools:text="@string/FinishString"
+        android:onClick="onButtonClicked"/>
 </android.support.constraint.ConstraintLayout>

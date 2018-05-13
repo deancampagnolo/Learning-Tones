@@ -195,6 +195,12 @@ public class NameThatTone extends AppCompatActivity {
                     answerFalse();
                 }
                 break;
+
+            case R.id.statsButton:
+                Intent i = new Intent(this, StatisticsPage.class);
+                startActivity(i);
+                break;
+
         }
     }
 
