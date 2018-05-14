@@ -198,6 +198,13 @@ public class NameThatTone extends AppCompatActivity {
 
             case R.id.statsButton:
                 Intent i = new Intent(this, StatisticsPage.class);
+                String stringToSend = "theScores";
+                i.putExtra("scores", stringToSend);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("scoresSerializable", scores);
+
+                i.putExtras(bundle);
                 startActivity(i);
                 break;
 
