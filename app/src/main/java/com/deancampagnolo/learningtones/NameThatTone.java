@@ -13,10 +13,11 @@ import android.widget.GridLayout;
 import java.util.ArrayList;
 
 public class NameThatTone extends AppCompatActivity {
-    private int usableNotesStart = 2;
-    private int usableNotesFinish = 6;
-    private final int NUMBEROFNOTES = 12;
+    private int usableNotesStart = 2;//lowest note possible (ex. C2 is the lowest C)
+    private int usableNotesFinish = 6;//highest note possible
+    private final int NUMBEROFNOTES = 12;//total number of notes
     private String TAG = "dean";
+
     private boolean[] notesBoolean;
     private CheckBox[] allTheNotes;
     private GridLayout gridLayout;
@@ -27,6 +28,9 @@ public class NameThatTone extends AppCompatActivity {
     private int currentNote;
     private int numberOfNotesBeingUsed;
     private SoundPool sp;
+    private int numberOfSounds;
+    private int soundsCurrentlyLoaded;
+    private boolean allSoundsLoaded;
 
     //This function helps with debugging by logging values
     private void p(String a){
@@ -48,45 +52,80 @@ public class NameThatTone extends AppCompatActivity {
         gridLayout = (GridLayout) findViewById(R.id.NTTGridLayout);
         allTheNotes = new CheckBox[NUMBEROFNOTES];
 
-        initializeNotes();
+
+        initializeNotes();// sets values of checkboxes from xml to a value in allTheNotes
         initializeScores();
-        unnecessaryNotesDisappear();
+        //unnecessaryNotesDisappear();
 
         createUsableNotes();
+
+        allNotesDisappear();
         sp = new SoundPool.Builder().setMaxStreams(2).build();//samples default to 1 which I want.
+        soundsCurrentlyLoaded = 0;
+        allSoundsLoaded = false;
         loadRealNotes(sp);
         loadExtras(sp);
 
+        final Button submitButton = (Button)findViewById(R.id.submitButton);
+
+        setNumberOfSounds();
+
+        sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+            @Override
+            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                soundsCurrentlyLoaded++;
+                if(soundsCurrentlyLoaded == numberOfSounds){
+                    allSoundsLoaded = true;
+                    submitButton.setText(R.string.start);
+
+                }
+            }
+        });
+
+
         numberOfNotesBeingUsed = soundPoolUsableNotes.size();
-        getRandomNote();
-        currentNote = getRandomNote();
+
 
         //initializing the button to next note in the beginning
-        Button a = (Button)findViewById(R.id.submitButton);
-        a.setText(R.string.start);
+
+        submitButton.setText(R.string.loadingSounds);
 
         p("after play");
     }
 
+
+    private void setNumberOfSounds(){
+        numberOfSounds = soundPoolUsableNotes.size() + soundPoolExtras.size();
+    }
+
     //This function initializes the CheckBoxes in nameThatTone into the allTheNotes CheckBox array
-    public void initializeNotes(){
-        allTheNotes[0] = (CheckBox)findViewById(R.id.aAnswer);
-        allTheNotes[1] = (CheckBox)findViewById(R.id.asAnswer);
-        allTheNotes[2] = (CheckBox)findViewById(R.id.bAnswer);
-        allTheNotes[3] = (CheckBox)findViewById(R.id.cAnswer);
-        allTheNotes[4] = (CheckBox)findViewById(R.id.csAnswer);
-        allTheNotes[5] = (CheckBox)findViewById(R.id.dAnswer);
-        allTheNotes[6] = (CheckBox)findViewById(R.id.dsAnswer);
-        allTheNotes[7] = (CheckBox)findViewById(R.id.eAnswer);
-        allTheNotes[8] = (CheckBox)findViewById(R.id.fAnswer);
-        allTheNotes[9] = (CheckBox)findViewById(R.id.fsAnswer);
-        allTheNotes[10] = (CheckBox)findViewById(R.id.gAnswer);
-        allTheNotes[11] = (CheckBox)findViewById(R.id.gsAnswer);
+    private void initializeNotes() {
+
+
+        allTheNotes[0] = (CheckBox) findViewById(R.id.aAnswer);
+        allTheNotes[1] = (CheckBox) findViewById(R.id.asAnswer);
+        allTheNotes[2] = (CheckBox) findViewById(R.id.bAnswer);
+        allTheNotes[3] = (CheckBox) findViewById(R.id.cAnswer);
+        allTheNotes[4] = (CheckBox) findViewById(R.id.csAnswer);
+        allTheNotes[5] = (CheckBox) findViewById(R.id.dAnswer);
+        allTheNotes[6] = (CheckBox) findViewById(R.id.dsAnswer);
+        allTheNotes[7] = (CheckBox) findViewById(R.id.eAnswer);
+        allTheNotes[8] = (CheckBox) findViewById(R.id.fAnswer);
+        allTheNotes[9] = (CheckBox) findViewById(R.id.fsAnswer);
+        allTheNotes[10] = (CheckBox) findViewById(R.id.gAnswer);
+        allTheNotes[11] = (CheckBox) findViewById(R.id.gsAnswer);
     }
 
     public void initializeScores(){
         //first is number of notes, second is right and wrong
         scores = new int[12][2];//in java all values are initialized to 0
+    }
+
+
+    private void allNotesDisappear(){
+        for (CheckBox i: allTheNotes){
+            gridLayout.removeView(i);//gridLayout is the name of the GridLayout
+        }
     }
 
     //removes CheckBoxes from view if they have the value false
@@ -97,6 +136,16 @@ public class NameThatTone extends AppCompatActivity {
             }
         }
     }
+
+    private void necessaryNotesReappear(){
+        for(int i = 0; i<NUMBEROFNOTES; i++){
+            if(notesBoolean[i]){
+                gridLayout.addView(allTheNotes[i]);
+            }
+        }
+    }
+
+
 
     private void createUsableNotes(){
         usableNotes = new ArrayList<>();
@@ -180,13 +229,21 @@ public class NameThatTone extends AppCompatActivity {
             case R.id.submitButton:
                 //p("submitButton pressed");
 
-                if(((Button) v).getText().toString() == getString(R.string.nextNote) ||
-                        ((Button) v).getText().toString() == getString(R.string.start)){
+
+                if(((Button) v).getText().toString().equals(getString(R.string.nextNote))){
                     clearEverything();
                     ((Button) v).setText(R.string.submit);
                     currentNote = getRandomNote();
                     sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
                     break;
+                } else if(((Button) v).getText().toString().equals(getString(R.string.start))){
+                    necessaryNotesReappear();
+                    ((Button) v).setText(R.string.submit);
+                    currentNote = getRandomNote();
+                    sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
+                    break;
+                } else if(((Button) v).getText().toString().equals(getString(R.string.loadingSounds))){
+                    break;//TODO probably should add something here
                 }
 
                 if(isSubmissionCorrect()){

@@ -22,5 +22,6 @@
     <string name="start">Start!</string>
     <string name="statsString">Your Stats</string>
     <string name="FinishString">Finish</string>
+    <string name="loadingSounds">Loading Sounds</string>
 
 </resources>
