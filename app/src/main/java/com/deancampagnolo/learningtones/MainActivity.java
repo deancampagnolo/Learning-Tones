@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nameThatToneButton = (Button)findViewById(R.id.nameThatToneButton);
 
         //for ads
         MobileAds.initialize(this, "ca-app-pub-8739894858175787~8702293436");
@@ -35,11 +34,27 @@ public class MainActivity extends AppCompatActivity {
         myAdView.loadAd(adRequest);
 
 
-        nameThatToneButton.setOnClickListener(new View.OnClickListener(){
+        /*nameThatToneButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 startActivity(new Intent(MainActivity.this, NameThatToneSelectorScreen.class));
             }
-        });
+        });*/ //kept this because I can reference this later
+
+
+    }
+
+    public void onButtonClicked(View v){
+        switch(v.getId()){
+            case R.id.nameThatToneButton:
+                startActivity(new Intent(MainActivity.this, NameThatToneSelectorScreen.class));
+                break;
+
+            case R.id.humThatToneButton:
+                break;
+
+
+        }
+
     }
 }

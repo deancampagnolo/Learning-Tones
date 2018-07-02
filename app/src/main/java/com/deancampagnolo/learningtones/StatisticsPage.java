@@ -52,6 +52,9 @@ public class StatisticsPage extends AppCompatActivity {
 
         BarData data = new BarData(labels,entryData);
 
+        //chart.getAxisLeft().setAxisMinValue(100);//FIXME this crashes on the name that tone selector screen
+
+
         chart.setData(data);
         chart.setDescription("Percentages of Your Guesses");
         chart.animateXY(1000, 2000);

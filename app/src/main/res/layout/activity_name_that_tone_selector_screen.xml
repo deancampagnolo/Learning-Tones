@@ -4,28 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background = "#696969"
+    android:background="#696969"
     tools:context="com.deancampagnolo.learningtones.NameThatToneSelectorScreen">
+
+    <TextView
+        android:id="@+id/SSRadioText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="casual"
+
+        android:gravity="center"
+        android:text="@string/nameThatTone"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1" />
 
     <TextView
         android:id="@+id/SSRadioText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:fontFamily="casual"
         android:gravity="center"
         android:text="@string/SelectorScreenButtonSelectionInstructions"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="24sp"
-        tools:layout_constraintBottom_creator="1"
 
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
 
-        tools:text="@string/SelectorScreenButtonSelectionInstructions"
-        tools:layout_editor_absoluteX="139dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:text="@string/SelectorScreenButtonSelectionInstructions" />
 
     <Button
 
@@ -46,27 +62,25 @@
         tools:layout_constraintRight_creator="1" />
 
     <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
+
+
         android:layout_height="wrap_content"
-
-
         android:layout_below="@+id/SSRadioText"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
         android:layout_gravity="center"
-        android:columnCount="3"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/NameThatToneNextButton"
         android:layout_marginBottom="32dp"
-        android:id="@+id/gridLayout"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:columnCount="3"
+        app:layout_constraintBottom_toTopOf="@+id/NameThatToneNextButton"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.5">
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1">
 
 
         <CheckBox
@@ -98,8 +112,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/bNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/bNote"
-            />
+            tools:text="@string/bNote" />
 
         <CheckBox
             android:id="@+id/cCheck"
@@ -110,8 +123,7 @@
             android:layout_row="1"
             android:text="@string/cNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/cNote"
-            />
+            tools:text="@string/cNote" />
 
         <CheckBox
             android:id="@+id/csCheck"
@@ -120,8 +132,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/csNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/csNote"
-            />
+            tools:text="@string/csNote" />
 
         <CheckBox
             android:id="@+id/dCheck"
@@ -130,8 +141,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/dNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/dNote"
-            />
+            tools:text="@string/dNote" />
 
         <CheckBox
             android:id="@+id/dsCheck"
@@ -142,8 +152,7 @@
             android:layout_row="2"
             android:text="@string/dsNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/dsNote"
-            />
+            tools:text="@string/dsNote" />
 
         <CheckBox
             android:id="@+id/eCheck"
@@ -152,8 +161,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/eNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/eNote"
-            />
+            tools:text="@string/eNote" />
 
         <CheckBox
             android:id="@+id/fCheck"
@@ -162,8 +170,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/fNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/fNote"
-            />
+            tools:text="@string/fNote" />
 
         <CheckBox
             android:id="@+id/fsCheck"
@@ -174,8 +181,7 @@
             android:layout_row="3"
             android:text="@string/fsNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/fsNote"
-            />
+            tools:text="@string/fsNote" />
 
         <CheckBox
             android:id="@+id/gCheck"
@@ -184,8 +190,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/gNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/gNote"
-            />
+            tools:text="@string/gNote" />
 
         <CheckBox
             android:id="@+id/gsCheck"
@@ -194,8 +199,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/gsNote"
             android:textColor="@android:color/holo_green_light"
-            tools:text="@string/gsNote"
-            />
+            tools:text="@string/gsNote" />
 
     </GridLayout>
 
@@ -206,8 +210,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         app:adSize="SMART_BANNER"
-        app:adUnitId="ca-app-pub-8739894858175787/2443188605"
+        app:adUnitId="placeHolder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
         android:fontFamily="casual"
-        android:text="@string/nameThatToneTitle"
+        android:text="@string/nameThatTone"
         android:textSize="36sp"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -162,7 +162,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         app:adSize="SMART_BANNER"
-        app:adUnitId="ca-app-pub-8739894858175787/2443188605"
+        app:adUnitId="placeHolder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

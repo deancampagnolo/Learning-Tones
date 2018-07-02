@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Learning Tones</string>
-    <string name="WelcomeToLearningTones">Welcome to Learning Tones</string>
+    <string name="welcomeToLearningTones">Welcome to Learning Tones</string>
     <string name="aNote">A</string>
     <string name="asNote">A#/Bb</string>
     <string name="bNote">B</string>
@@ -15,7 +15,7 @@
     <string name="gsNote">G#/Ab</string>
     <string name="hearAgain">Hear Note Again</string>
     <string name="SelectorScreenButtonSelectionInstructions">Select the Notes\n You Want to be Tested on</string>
-    <string name="nameThatToneTitle">Name That Tone</string>
+    <string name="nameThatTone">Name That Tone</string>
     <string name="nextString">Next</string>
     <string name="submit">Submit</string>
     <string name="nextNote">Next Note</string>
@@ -23,5 +23,10 @@
     <string name="statsString">Your Stats</string>
     <string name="FinishString">Finish</string>
     <string name="loadingSounds">Loading Sounds</string>
+    <string name="youArePlaying">You are playing </string>
+    <string name="humThatTone">Hum That Tone</string>
+    <string name="nameThatToneExclamationMark">Name That Tone!</string>
+    <string name="help">Help?</string>
+    <string name="games">Games</string>
 
 </resources>
