@@ -12,9 +12,11 @@ import android.widget.CheckBox;
 
 public class NameThatToneSelectorScreen extends AppCompatActivity {
 
-    boolean atLeastOneIsChecked;
-    private CheckBox[] allTheNotes;
-    String TAG = "dean";
+    String TAG = "dean";//for debugging
+
+    boolean atLeastOneIsChecked;//boolean value for whether at least one of the checkboxes is checked
+    private CheckBox[] allTheNotes;//array that contains all of the checkboxes for each of the 12 respective notes
+
 
     //This function helps with debugging by logging values
     private void p(String a){
@@ -24,11 +26,11 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        allTheNotes = new CheckBox[12];
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_that_tone_selector_screen);
-        initializeNotes();
+
+        allTheNotes = new CheckBox[12];
+        initializeNotes();//populates the allTheNotes array with each of the checkbox notes
 
     }
 
@@ -50,10 +52,13 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
 
     //sends the boolean values to the next intent through clicking the next button.
     public void onButtonClicked(View v){
-        Intent i = new Intent(this, NameThatTone.class);
-        i.putExtra("notesBoolean", getNotesBoolean());
-        if(atLeastOneIsChecked) {
-            startActivity(i);
+        switch(v.getId()) {
+            case R.id.nameThatToneNextButton:
+                Intent i = new Intent(this, NameThatTone.class);
+                i.putExtra("notesBoolean", getNotesBoolean());
+                if (atLeastOneIsChecked) {
+                    startActivity(i);
+                }
         }
     }
 
@@ -64,7 +69,7 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
         for(int i = 0; i<allTheNotes.length; i++){
             if(allTheNotes[i].isChecked()){
                 notesBoolean[i] = true;
-                atLeastOneIsChecked = true;
+                atLeastOneIsChecked = true;//not sure if there is a faster way to do this
             } else{
                 notesBoolean[i] = false;
             }

@@ -45,7 +45,7 @@
 
     <Button
 
-        android:id="@+id/NameThatToneNextButton"
+        android:id="@+id/nameThatToneNextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -75,7 +75,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:columnCount="3"
-        app:layout_constraintBottom_toTopOf="@+id/NameThatToneNextButton"
+        app:layout_constraintBottom_toTopOf="@+id/nameThatToneNextButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

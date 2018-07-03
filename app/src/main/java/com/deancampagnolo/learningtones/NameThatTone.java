@@ -13,24 +13,23 @@ import android.widget.GridLayout;
 import java.util.ArrayList;
 
 public class NameThatTone extends AppCompatActivity {
+    private String TAG = "dean";//for debugging
+
     private int usableNotesStart = 2;//lowest note possible (ex. C2 is the lowest C)
     private int usableNotesFinish = 6;//highest note possible
     private final int NUMBEROFNOTES = 12;//total number of notes
-    private String TAG = "dean";
-
-    private boolean[] notesBoolean;
-    private CheckBox[] allTheNotes;
-    private GridLayout gridLayout;
-    private ArrayList<Integer> usableNotes;
-    private ArrayList<Integer> soundPoolUsableNotes;
-    private ArrayList<Integer> soundPoolExtras;
-    private int[][] scores;
-    private int currentNote;
-    private int numberOfNotesBeingUsed;
-    private SoundPool sp;
-    private int numberOfSounds;
-    private int soundsCurrentlyLoaded;
-    private boolean allSoundsLoaded;
+    private boolean[] notesBoolean;//contains the boolean value of all 12 notes on whether it is being tested or not
+    private CheckBox[] allTheNotes;//the array of all checkboxes (12)
+    private GridLayout gridLayout;//the organization of all checkboxes
+    private ArrayList<Integer> usableNotes;//contains all the notes that are being tested
+    private ArrayList<Integer> soundPoolUsableNotes;//contains the ids respective of the usable note's sound
+    private ArrayList<Integer> soundPoolExtras;//contains the ids of the extra sounds
+    private int[][] scores;//contains the scores for each of the notes, first [] is for the type of note, second [] is for the amount of true ([0]) and amound of false ([1])
+    private int currentNote;//the current note being tested
+    private int numberOfNotesBeingUsed;//the amount of notes being tested
+    private SoundPool sp;//object that plays sounds
+    private int numberOfSounds;//total number of sounds (usablenotes + extras)
+    private int soundsCurrentlyLoaded;//amount of sounds that have been loaded
 
     //This function helps with debugging by logging values
     private void p(String a){
@@ -54,41 +53,39 @@ public class NameThatTone extends AppCompatActivity {
 
 
         initializeNotes();// sets values of checkboxes from xml to a value in allTheNotes
-        initializeScores();
-        //unnecessaryNotesDisappear();
+        initializeScores();//sets scores array to empty values
 
-        createUsableNotes();
+        createUsableNotes();//adds notes(sound files) into the arrayList of usable notes
 
-        allNotesDisappear();
+        allNotesDisappear();//removes checkboxes from view
+
         sp = new SoundPool.Builder().setMaxStreams(2).build();//samples default to 1 which I want.
         soundsCurrentlyLoaded = 0;
-        allSoundsLoaded = false;
         loadRealNotes(sp);
         loadExtras(sp);
 
-        final Button submitButton = (Button)findViewById(R.id.submitButton);
+        final Button submitButton = (Button)findViewById(R.id.submitButton);//not entirely sure why this has to be final
 
-        setNumberOfSounds();
+        setNumberOfSounds(); //gives the integer numberOfSounds a value equal to the total amount of sounds (music + extra)
 
+        //Listener to see when all sounds are loaded
         sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
                 soundsCurrentlyLoaded++;
                 if(soundsCurrentlyLoaded == numberOfSounds){
-                    allSoundsLoaded = true;
-                    submitButton.setText(R.string.start);
-
+                    submitButton.setText(R.string.start);//when all sounds loaded it sets text to start
                 }
             }
         });
 
 
-        numberOfNotesBeingUsed = soundPoolUsableNotes.size();
+        numberOfNotesBeingUsed = soundPoolUsableNotes.size();//sets integer value of numberOfNotesBeingUsed equal to the amount of usable musical notes
 
 
-        //initializing the button to next note in the beginning
 
-        submitButton.setText(R.string.loadingSounds);
+
+        submitButton.setText(R.string.loadingSounds);//Submit Button starts with loading sounds
 
         p("after play");
     }
@@ -144,8 +141,6 @@ public class NameThatTone extends AppCompatActivity {
             }
         }
     }
-
-
 
     private void createUsableNotes(){
         usableNotes = new ArrayList<>();
@@ -227,40 +222,39 @@ public class NameThatTone extends AppCompatActivity {
                 break;
 
             case R.id.submitButton:
-                //p("submitButton pressed");
-
-
-                if(((Button) v).getText().toString().equals(getString(R.string.nextNote))){
+                if(((Button) v).getText().toString().equals(getString(R.string.nextNote))){//if the submit button equals nextNote
                     clearEverything();
                     ((Button) v).setText(R.string.submit);
                     currentNote = getRandomNote();
                     sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
-                    break;
-                } else if(((Button) v).getText().toString().equals(getString(R.string.start))){
+                    break;//this break is to avoid isSubmissionCorrect
+
+                } else if(((Button) v).getText().toString().equals(getString(R.string.start))){//if the submit button equals start
                     necessaryNotesReappear();
                     ((Button) v).setText(R.string.submit);
                     currentNote = getRandomNote();
                     sp.play(soundPoolUsableNotes.get(currentNote),1,1,0,0,1f);
-                    break;
-                } else if(((Button) v).getText().toString().equals(getString(R.string.loadingSounds))){
-                    break;//TODO probably should add something here
+                    break;//this break is to avoid isSubmissionCorrect
+
+                } else if(((Button) v).getText().toString().equals(getString(R.string.loadingSounds))){//if submit button equals LoadingSounds
+                    break;//Nothing happens, also avoid isSubmissionCorrect
                 }
 
                 if(isSubmissionCorrect()){
-                    answerTrue();
+                    answerTrue();//adds a point to the notes score in the "correct" category
                 } else {
-                    answerFalse();
+                    answerFalse();//adds a point to the notes score in the "incorrect" category
                 }
                 break;
 
             case R.id.statsButton:
                 Intent i = new Intent(this, StatisticsPage.class);
+
+                //this block is to send the scores to the stats page
                 String stringToSend = "theScores";
                 i.putExtra("scores", stringToSend);
-
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("scoresSerializable", scores);
-
                 i.putExtras(bundle);
                 startActivity(i);
                 break;
@@ -283,6 +277,7 @@ public class NameThatTone extends AppCompatActivity {
         }
     }
 
+    //if the users guess was correct
     public boolean isSubmissionCorrect(){
         for(int i = 0; i<notesBoolean.length; i++) {
             if (notesBoolean[i]) {
@@ -317,7 +312,8 @@ public class NameThatTone extends AppCompatActivity {
 
     }
 
-    public int currentNoteIs(){//returns the note in regards to allTheNotes
+    //returns the note in regards to allTheNotes
+    public int currentNoteIs(){
         int amountPerNote = (usableNotesFinish-usableNotesStart)+1;//for the total amount of notes
         int beginningSearch = 0;
 

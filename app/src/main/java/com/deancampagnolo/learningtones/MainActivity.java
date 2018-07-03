@@ -5,16 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button nameThatToneButton;
-    String TAG = "dean";
+    String TAG = "dean";//for debugging
     AdView myAdView;
 
     //This function helps with debugging by logging values
@@ -28,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //for ads
-        MobileAds.initialize(this, "ca-app-pub-8739894858175787~8702293436");
+        //MobileAds.initialize(this, "ca-app-pub-8739894858175787~8702293436"); //will add later
         myAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         myAdView.loadAd(adRequest);
@@ -40,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, NameThatToneSelectorScreen.class));
             }
         });*/ //kept this because I can reference this later
-
-
     }
 
     public void onButtonClicked(View v){
@@ -52,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.humThatToneButton:
                 break;
-
-
         }
-
     }
 }
