@@ -5,10 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity {
     String TAG = "dean";//for debugging
@@ -42,11 +42,18 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonClicked(View v){
         switch(v.getId()){
             case R.id.nameThatToneButton:
-                startActivity(new Intent(MainActivity.this, NameThatToneSelectorScreen.class));
+                startActivity(new Intent(this, NameThatToneSelectorScreen.class));
                 break;
 
             case R.id.humThatToneButton:
+                Toast.makeText(this, "This game is coming soon\nand is not currently available", Toast.LENGTH_SHORT).show();
                 break;
+
+            case R.id.helpButton:
+                startActivity(new Intent(this, Help.class));
+                break;
+
+
         }
     }
 }

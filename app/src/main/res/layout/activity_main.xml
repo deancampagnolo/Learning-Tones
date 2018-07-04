@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2A2422"
+    android:background="#57291a"
 
     tools:context="com.deancampagnolo.learningtones.MainActivity"
     tools:layout_editor_absoluteY="25dp">
@@ -18,7 +18,7 @@
         android:layout_marginBottom="26dp"
         android:fontFamily="casual"
         android:text="@string/games"
-        android:textColor="@android:color/holo_green_dark"
+        android:textColor="#9ca04b"
         android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,8 +33,8 @@
         android:layout_marginTop="26dp"
         android:fontFamily="casual"
         android:text="@string/welcomeToLearningTones"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="24dp"
+        android:textColor="#2f7f7c"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,21 +47,23 @@
         android:layout_alignParentStart="true"
         ads:adSize="SMART_BANNER"
         ads:adUnitId="placeHolder"
-        ads:layout_constraintEnd_toEndOf="@+id/helpButton"
-        ads:layout_constraintTop_toBottomOf="@+id/helpButton" />
+        ads:layout_constraintBottom_toBottomOf="parent" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="196dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:dividerPadding="0dp"
             android:orientation="horizontal">
@@ -86,6 +88,7 @@
                 android:layout_weight="1"
                 android:background="#0000"
                 android:scaleType="fitXY"
+                android:onClick="onButtonClicked"
                 app:srcCompat="@drawable/hum_that_tone_button_art__coming_soon" />
         </LinearLayout>
     </HorizontalScrollView>
@@ -94,12 +97,13 @@
         android:id="@+id/helpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="8dp"
         android:background="#0000"
+        android:onClick="onButtonClicked"
         android:text="@string/help"
-        android:textColor="@color/colorAccent"
+        android:textColor="#e6323d"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

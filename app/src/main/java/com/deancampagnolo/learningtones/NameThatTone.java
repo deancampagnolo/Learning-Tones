@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class NameThatTone extends AppCompatActivity {
@@ -237,6 +239,7 @@ public class NameThatTone extends AppCompatActivity {
                     break;//this break is to avoid isSubmissionCorrect
 
                 } else if(((Button) v).getText().toString().equals(getString(R.string.loadingSounds))){//if submit button equals LoadingSounds
+                    Toast.makeText(this,"Please wait for the sounds to finish loading",Toast.LENGTH_SHORT).show();
                     break;//Nothing happens, also avoid isSubmissionCorrect
                 }
 

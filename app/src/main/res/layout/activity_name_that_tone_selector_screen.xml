@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#696969"
+    android:background="#5f715b"
     tools:context="com.deancampagnolo.learningtones.NameThatToneSelectorScreen">
 
     <TextView
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:text="@string/nameThatTone"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_light"
+        android:textColor="#d29715"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         android:gravity="center"
         android:text="@string/SelectorScreenButtonSelectionInstructions"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_light"
+        android:textColor="#d29715"
         android:textSize="24sp"
 
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"

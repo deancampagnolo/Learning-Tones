@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".NameThatTone" />
         <activity android:name=".NameThatToneSelectorScreen" />
-        <activity android:name=".StatisticsPage"></activity>
+        <activity android:name=".StatisticsPage" />
+        <activity android:name=".Help"></activity>
     </application>
 
 </manifest>

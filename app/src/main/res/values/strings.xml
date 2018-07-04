@@ -28,5 +28,9 @@
     <string name="nameThatToneExclamationMark">Name That Tone!</string>
     <string name="help">Help?</string>
     <string name="games">Games</string>
+    <string name="helpPageText1">If you have any questions, concerns, suggestions, or want to talk about anything please email me at deancampagnolo@gmail.com</string>
+    <string name="helpPage">Help Page</string>
+    <string name="helpText0">To play a game, click a game on the horizontal scrolling section in the upper half of the Main Menu.</string>
+    <string name="backToMainMenu">Back To Main Menu</string>
 
 </resources>
