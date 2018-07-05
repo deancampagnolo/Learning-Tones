@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class NameThatTone extends AppCompatActivity {
     private String TAG = "dean";//for debugging
 
-    private int usableNotesStart = 2;//lowest note possible (ex. C2 is the lowest C)
-    private int usableNotesFinish = 6;//highest note possible
+    private int usableNotesStart;//lowest note possible (ex. C2 is the lowest C)
+    private int usableNotesFinish;//highest note possible
     private final int NUMBEROFNOTES = 12;//total number of notes
     private boolean[] notesBoolean;//contains the boolean value of all 12 notes on whether it is being tested or not
     private CheckBox[] allTheNotes;//the array of all checkboxes (12)
@@ -48,6 +48,8 @@ public class NameThatTone extends AppCompatActivity {
         //this block is to retrieve the booleanArray from the last intent
         Intent lastIntent = getIntent();
         notesBoolean = lastIntent.getBooleanArrayExtra("notesBoolean");
+        usableNotesStart = lastIntent.getIntExtra("currentLowerBound",-1);//throw an error if it doesn't get value
+        usableNotesFinish = lastIntent.getIntExtra("currentUpperBound", -1);//throw an error if it doesn't get value
 
         //gets the grid layout
         gridLayout = (GridLayout) findViewById(R.id.NTTGridLayout);

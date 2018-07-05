@@ -11,7 +11,7 @@
         android:id="@+id/SSRadioText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="casual"
 
         android:gravity="center"
@@ -20,6 +20,7 @@
         android:textColor="#d29715"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintBottom_creator="1" />
@@ -28,18 +29,19 @@
         android:id="@+id/SSRadioText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="casual"
         android:gravity="center"
         android:text="@string/SelectorScreenButtonSelectionInstructions"
         android:textAlignment="center"
         android:textColor="#d29715"
+
         android:textSize="24sp"
 
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SSRadioText3"
         tools:layout_constraintBottom_creator="1"
         tools:text="@string/SelectorScreenButtonSelectionInstructions" />
 
@@ -50,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="16dp"
         android:onClick="onButtonClicked"
         android:text="@string/nextString"
         app:layout_constraintBottom_toTopOf="@+id/adView3"
@@ -71,14 +73,12 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
         android:layout_gravity="center"
-        android:layout_marginBottom="32dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
         android:columnCount="3"
-        app:layout_constraintBottom_toTopOf="@+id/nameThatToneNextButton"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SSRadioText"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintRight_creator="1">
 
@@ -203,6 +203,34 @@
 
     </GridLayout>
 
+    <android.support.v7.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout">
+
+        <CheckBox
+            android:id="@+id/selectAllCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonClicked"
+            android:text="@string/selectAll"
+            android:textColor="@android:color/holo_purple"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            tools:layout_editor_absoluteX="161dp" />
+
+        <CheckBox
+            android:id="@+id/deselectAllCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonClicked"
+            android:text="@string/deselectAll"
+            android:textColor="@android:color/holo_orange_dark"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            tools:layout_editor_absoluteX="161dp" />
+    </android.support.v7.widget.GridLayout>
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView3"
         android:layout_width="0dp"
@@ -212,6 +240,43 @@
         app:adSize="SMART_BANNER"
         app:adUnitId="placeHolder"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarLowerBound"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/upperBoundText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lowerBoundText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lowerBoundPitch"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarLowerBound"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/upperBoundText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/upperBoundPitch"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarUpperBound"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarUpperBound"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/nameThatToneNextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

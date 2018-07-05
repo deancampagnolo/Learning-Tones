@@ -32,5 +32,10 @@
     <string name="helpPage">Help Page</string>
     <string name="helpText0">To play a game, click a game on the horizontal scrolling section in the upper half of the Main Menu.</string>
     <string name="backToMainMenu">Back To Main Menu</string>
+    <string name="lowerBoundPitch">Lower Bound Pitch</string>
+    <string name="upperBoundPitch">Upper Bound Pitch</string>
+    <string name="space">&#160;</string>
+    <string name="selectAll">Select All</string>
+    <string name="deselectAll">Deselect All</string>
 
 </resources>

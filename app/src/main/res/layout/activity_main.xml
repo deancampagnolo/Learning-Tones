@@ -34,7 +34,7 @@
         android:fontFamily="casual"
         android:text="@string/welcomeToLearningTones"
         android:textColor="#2f7f7c"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
