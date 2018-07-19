@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c03844"
+    android:background="@color/red"
     tools:context=".Help">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="8dp"
         android:text="@string/helpText0"
-        android:textColor="#5f2c3d"
+        android:textColor="@color/blue"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="monospace"
         android:text="@string/helpPage"
-        android:textColor="#5f2c3d"
+        android:textColor="@color/blue"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:text="@string/helpPageText1"
-        android:textColor="#5f2c3d"
+        android:textColor="@color/blue"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/helpBackToMainMenuButton"
         app:layout_constraintEnd_toEndOf="parent"

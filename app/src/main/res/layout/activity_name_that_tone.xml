@@ -16,7 +16,7 @@
         android:layout_marginTop="48dp"
         android:fontFamily="casual"
         android:text="@string/nameThatTone"
-        android:textColor="#d29715"
+        android:textColor="@color/orange"
         android:textSize="36sp"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -49,84 +49,96 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/aNote" />
+            android:text="@string/aNote"
+            android:textColor="@color/orange" />
 
         <CheckBox
             android:id="@+id/asAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/asNote" />
+            android:text="@string/asNote"
+            android:textColor="@color/orange" />
 
         <CheckBox
             android:id="@+id/bAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/bNote" />
+            android:text="@string/bNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/cAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/cNote" />
+            android:text="@string/cNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/csAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/csNote" />
+            android:text="@string/csNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/dAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/dNote" />
+            android:text="@string/dNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/dsAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/dsNote" />
+            android:text="@string/dsNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/eAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/eNote" />
+            android:text="@string/eNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/fAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/fNote" />
+            android:text="@string/fNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/fsAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/fsNote" />
+            android:text="@string/fsNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/gAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/gNote" />
+            android:text="@string/gNote"
+            android:textColor="@color/orange"/>
 
         <CheckBox
             android:id="@+id/gsAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClicked"
-            android:text="@string/gsNote" />
+            android:text="@string/gsNote"
+            android:textColor="@color/orange"/>
     </GridLayout>
 
     <Button
