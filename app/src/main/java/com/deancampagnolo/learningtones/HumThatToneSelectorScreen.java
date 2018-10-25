@@ -10,8 +10,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-public class NameThatToneSelectorScreen extends AppCompatActivity {
+public class HumThatToneSelectorScreen extends AppCompatActivity {
 
     String TAG = "dean";//for debugging
 
@@ -36,7 +35,7 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_name_that_tone_selector_screen);
+        setContentView(R.layout.activity_hum_that_tone_selector_screen);
 
         allTheNotes = new CheckBox[12];
         initializeNotes();//populates the allTheNotes array with each of the checkbox notes
@@ -119,7 +118,7 @@ public class NameThatToneSelectorScreen extends AppCompatActivity {
             case R.id.nameThatToneNextButton:
                 getNotesBoolean();//this needs to be here so that it can check for if a checkbox is checked for the if statements
                 if (atLeastOneIsChecked &&(currentLowerBound<=currentUpperBound)) {
-                    Intent i = new Intent(this, NameThatTone.class);
+                    Intent i = new Intent(this, HumThatTone.class);
                     i.putExtra("notesBoolean", getNotesBoolean());
                     i.putExtra("currentLowerBound", currentLowerBound);
                     i.putExtra("currentUpperBound", currentUpperBound);

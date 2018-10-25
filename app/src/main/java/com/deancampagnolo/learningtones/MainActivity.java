@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -46,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.humThatToneButton:
-                Toast.makeText(this, "This game is coming soon\nand is not currently available", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "This game is coming soon\nand is not currently available", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, HumThatToneSelectorScreen.class));
                 break;
 
             case R.id.helpButton:

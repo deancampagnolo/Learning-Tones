@@ -9,17 +9,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:versionCode="3">
-        <activity android:name=".MainActivity" android:screenOrientation="nosensor">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NameThatTone" android:screenOrientation="nosensor"/>
-        <activity android:name=".NameThatToneSelectorScreen" android:screenOrientation="nosensor"/>
-        <activity android:name=".StatisticsPage" android:screenOrientation="nosensor"/>
-        <activity android:name=".Help" android:screenOrientation="nosensor"/>
+        <activity
+            android:name=".NameThatTone"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".NameThatToneSelectorScreen"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".StatisticsPage"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".Help"
+            android:screenOrientation="nosensor" />
+        <activity android:name=".HumThatToneSelectorScreen" />
+        <activity android:name=".HumThatTone"></activity>
     </application>
 
 </manifest>
